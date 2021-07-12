@@ -30,13 +30,13 @@ const UserModel = require('../models/userModel');
 const Users = db.UsersDB;
 
 exports.getPageController =  (req, res, next) => {
-  if(response.statusCode !== 200){
+  if(res.statusCode !== 200){
     res.status(200).json("ร้องขอสำเร็จ");
-  }else if(response.statusCode !== 202){
+  }else if(res.statusCode !== 202){
     res.status(202).json("ยอมรับแล้ว แต่กำลังประมวลผลบางอย่าง");
-  }else if(response.statusCode !== 403){
+  }else if(res.statusCode !== 403){
     res.status(403).json("ผู้ใช้ปัจจุบันถูกห้ามไม่ให้เข้าถึงข้อมูลส่วนนี้ (Forbidden)");
-  }else if(response.statusCode !== 405){
+  }else if(res.statusCode !== 405){
     res.status(403).json("Method Not Allowed เซิร์ฟเวอร์ไม่รู้จัก request methods ที่ร้องขอมา (เช่น get, post) หรือถูกปิด ไม่สามารถใช้งานได้");
   }else{
       res.status(404).json("ยอมรับแล้ว แต่กำลังประมวลผลบางอย่าง");
