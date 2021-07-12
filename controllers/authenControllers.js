@@ -45,6 +45,7 @@ exports.getPageController = async (req, res, next) => {
     UserModel.findByEmail({ f_login_name: f_login_name })
       .then((result) => {
         if (result.length !== 0) {
+          console.log(result)
           const f_name = result.f_name;
           const f_lastname = result.f_lastname;
           const f_department = result.f_department;
@@ -57,6 +58,7 @@ exports.getPageController = async (req, res, next) => {
           return bcrypt
             .compare(f_login_password, result.f_hash_password)
             .then((result) => {
+              console.log(result)
               if (!result) {
                 res.status(401).json({
                   message: lang.loginFailed,
@@ -98,6 +100,7 @@ exports.getPageController = async (req, res, next) => {
             message: lang.loginFailed,
           });
         }
+        console.log(result)
       })
       .catch((err) => {
         res.status(500).json({

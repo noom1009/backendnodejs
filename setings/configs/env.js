@@ -2,7 +2,7 @@ const env = {
     database: "realstate",
     username: "root",
     password: "#Iris@2013",
-    host: "192.168.40.192",
+    host: "localhost",
     port: "3306", 
     dialect: "mysql",
     srvPort: "9000",

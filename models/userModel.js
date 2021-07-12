@@ -95,11 +95,10 @@ class userModel {
       where: { f_login_name: f_login_name, f_status: "1" },
     })
       .then((result) => {
-          console.log(result)
         return result;
       })
       .catch((err) => {
-        log.logger("warring", "505" + err.message || lang.readeDataError);
+        log.logger("warring", "500" + err.message || lang.readeDataError);
         console.log(err);
         res.json({
           message: err.message || lang.readeDataError,
