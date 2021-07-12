@@ -1,0 +1,14 @@
+{
+  "name": "backendnodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Mr. Thanit Netprokaew",
+  "license": "ISC"
+}
