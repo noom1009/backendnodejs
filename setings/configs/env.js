@@ -5,7 +5,7 @@ const env = {
     host: "192.168.40.192",
     port: "3306", 
     dialect: "mysql",
-    srvPort: "8180",
+    srvPort: "9000",
     checkIPaddress: "https://api.ipify.org?format=json",
     secret: "@#SDfionli1818685*-+sfsf",
     storageUpload: "./public/uploads",
