@@ -29,11 +29,11 @@ const dateFormat = moment(now).tz("Asia/Bangkok").format("YYYY-MM-DD hh:mm:ss");
 const UserModel = require('../models/userModel');
 const Users = db.UsersDB;
 
-exports.getPageController = async (req, res, next) => {
+exports.getPageController =  (req, res, next) => {
     res.status(200).json("Authen");
   };
   
-  exports.logOutController = async (req, res, next) => {
+  exports.logOutController =  (req, res, next) => {
     req.session.destroy();
     res.status(200).json({
       message: lang.logOut,
@@ -42,7 +42,36 @@ exports.getPageController = async (req, res, next) => {
   
   exports.logInController = (req, res, next) => {
     const { f_login_name = "", f_login_password } = req.body;
-    UserModel.findUserByEmail({ f_login_name: f_login_name })
+/*****
+ *   let option = {where:{f_status:1},raw: true}
+  let campaign = await CampaignOPT.findAll(option)
+  let platform = await PlatformOPT.findAll(option)
+  let project = await ProjectOPT.findAll(option)
+  let budget = await BudgetOPT.findAll(option)
+  let createRow = await LeedsPorsonal.saveAll(data)
+  .then((result) => {
+   return result
+  })
+  .catch((err) => {
+   next(err);
+  });
+
+  Promise
+    .all([campaign, platform, project, budget, createRow])
+    .then(responses => {
+        console.log('**********COMPLETE RESULTS****************');
+        console.log(responses[0]); // user profile
+        console.log(responses[1]); // all reports
+        console.log(responses[2]); // report details
+        console.log(responses[3]); // report details
+        console.log(responses[4]); // report details
+    })
+    .catch(err => {
+        console.log('**********ERROR RESULT****************');
+        console.log(err);
+    });
+ * ******/
+    UserModel.findUserByEmail({ f_login_name: f_login_name , f_login_password: f_login_password})
       .then((result) => {
         if (result.length !== 0) {
           console.log(result)
