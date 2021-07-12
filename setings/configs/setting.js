@@ -1,8 +1,6 @@
 const setting = {
     rootPage: "/",
     errorPage: "errorPage",
-    companyName: "IRISGROUP",
-    logoApp: "irisgroup/logoiris.png",
-    appTitle: "Agent Stock",
+    logoApp: "logoiris.png",
   };
   module.exports = setting;

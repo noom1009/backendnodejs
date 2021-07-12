@@ -1,0 +1,21 @@
+const lang_App = {
+    appTitle: "Sales Online",
+    companyName: "IRISGROUP",
+    usersMessages: "รหัสผ่านไม่ถูกต้อง",
+    errorCode: "505 Error",
+    createDatabase: "Insert Database Success",
+    createDataError: "Insert Database Error",
+    updateDatabase: "Update Database Success",
+    updateDataError: "Update Database Error",
+    readeDatabase: "Success",
+    readeDataError: "Search Database Error",
+    searchDatabase: "Search Database Success",
+    deleteDatabase: "Delete Database Success",
+    deleteDataError: "Delete Database Error",
+    usersSuccess: "Success",
+    emptyData: "กรุณากรอกข้อมูลส่งมาด้วย",
+    messagesEmpty: "",
+    loginFailed: "Authentication failed",
+    logOut: "Logout successfully",
+  };
+  module.exports = lang_App;

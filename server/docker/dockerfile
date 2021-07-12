@@ -1,0 +1,6 @@
+FROM node:11-alpine as frontend
+WORKDIR /app
+COPY package.json package-lock.json webpack.mix.js /app/
+RUN npm install
+COPY . .
+RUN npm run start

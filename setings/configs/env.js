@@ -19,5 +19,6 @@ const env = {
     },
     expiresIn: "1h", 
     expiresTime: "3600",
+    TOKEN_SECRET:'12345679',
   };
   module.exports = env;
