@@ -22,6 +22,6 @@ const sequelize = new Sequelize(env.database, env.username, env.password, {
   
   db.Sequelize = Sequelize;
   db.sequelize = sequelize;
-  db.UsesrDB = require('../models/schema/users/tbluser')(sequelize, Sequelize);
+  db.UsersDB = require('../models/schema/users/tbluser')(sequelize, Sequelize);
 
   module.exports = db;

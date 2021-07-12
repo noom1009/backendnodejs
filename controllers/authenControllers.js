@@ -27,7 +27,7 @@ const now = new Date();
 const dateString = moment(now).tz("Asia/Bangkok").format("D/M/Y");
 const dateFormat = moment(now).tz("Asia/Bangkok").format("YYYY-MM-DD hh:mm:ss");
 const UserModel = require('../models/userModel');
-const UserDB = db.UserDB;
+const Users = db.UsersDB;
 
 exports.getPageController = async (req, res, next) => {
     res.status(200).json("Authen");
@@ -40,9 +40,9 @@ exports.getPageController = async (req, res, next) => {
     });
   };
   
-  exports.logInController = async (req, res, next) => {
+  exports.logInController = (req, res, next) => {
     const { f_login_name = "", f_login_password } = req.body;
-    UserModel.findByEmail({ f_login_name: f_login_name })
+    UserModel.findUserByEmail({ f_login_name: f_login_name })
       .then((result) => {
         if (result.length !== 0) {
           console.log(result)
@@ -52,7 +52,7 @@ exports.getPageController = async (req, res, next) => {
           const f_admin_status = result.f_admin_status;
           const f_login_name = result.f_login_name;
           const f_position = result.f_position;
-          const f_acc_id = result.f_acc_id;
+          const f_acc_code = result.f_acc_code;
           const f_accounttype = result.f_accounttype;
           let dataUsers = result;
           return bcrypt
@@ -67,14 +67,15 @@ exports.getPageController = async (req, res, next) => {
                 let jwtToken = jwt.sign(
                   {
                     f_login_name: f_login_name,
-                    userId: f_acc_id,
+                    userId: f_acc_code,
                   },
                   env.secret,
                   {
                     expiresIn: "1h", 
                   }
                 );
-                req.session.f_acc_id = f_acc_id;
+                let token = jwtToken;
+                req.session.f_acc_code = f_acc_code;
                 req.session.f_login_name = f_login_name;
                 req.session.f_name = f_name;
                 req.session.f_lastname = f_lastname;
@@ -100,7 +101,6 @@ exports.getPageController = async (req, res, next) => {
             message: lang.loginFailed,
           });
         }
-        console.log(result)
       })
       .catch((err) => {
         res.status(500).json({
