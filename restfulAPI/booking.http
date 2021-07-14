@@ -1,0 +1,2 @@
+GET http://localhost:9000/booking
+Content-Type: application/json

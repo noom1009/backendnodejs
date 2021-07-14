@@ -23,5 +23,5 @@ const sequelize = new Sequelize(env.database, env.username, env.password, {
   db.Sequelize = Sequelize;
   db.sequelize = sequelize;
   db.UsersDB = require('../models/schema/users/tbluser')(sequelize, Sequelize);
-
+  db.BookingDB = require('../models/schema/booking/index')(sequelize, Sequelize);
   module.exports = db;

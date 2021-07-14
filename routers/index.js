@@ -8,6 +8,9 @@ const env = require('../setings/configs/env');
 const lang = require('../setings/lang/lang_app');
 
 const authenRouter = require("./authen/index");
+const bookingRouter = require("./booking/index");
+
 router.use("/authen", authenRouter);
+router.use("/booking", bookingRouter);
 
 module.exports = router;
