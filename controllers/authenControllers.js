@@ -124,11 +124,13 @@ exports.getPageController =  (req, res, next) => {
                 req.session.f_position = f_position;
                 req.session.f_admin_status = f_admin_status;
                 req.session.f_accounttype = f_accounttype;
-                res.header("auth-token", token).send(token);
+                //res.header("auth-token", token).send(token);
                 res.status(200).json({
+                  data: {
                   token: jwtToken,
                   dataUsers: dataUsers,
                   message: lang.usersSuccess,
+                  }
                 });
               }
             })
