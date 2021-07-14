@@ -1,4 +1,4 @@
 POST http://localhost:9000/authen/login
 Content-Type: application/json
 
-{"f_login_name":"thanit@iris.co.th","f_login_password":"123456789"}
+{ "f_email": "thanit@iris.co.th", "f_password": "123456789"}

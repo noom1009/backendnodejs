@@ -27,6 +27,7 @@ const now = new Date();
 const dateString = moment(now).tz("Asia/Bangkok").format("D/M/Y");
 const dateFormat = moment(now).tz("Asia/Bangkok").format("YYYY-MM-DD hh:mm:ss");
 const UserModel = require('../models/userModel');
+const con = require("../setings/configs/mysql");
 const Users = db.UsersDB;
 
 exports.getPageController =  (req, res, next) => {
@@ -51,7 +52,8 @@ exports.getPageController =  (req, res, next) => {
   };
   
   exports.logInController = (req, res, next) => {
-    const { f_login_name = "", f_login_password } = req.body;
+    const { f_email = "", f_password } = req.body;
+    console.log(req.body);
 /*****
  *   let option = {where:{f_status:1},raw: true}
   let campaign = await CampaignOPT.findAll(option)
@@ -81,7 +83,7 @@ exports.getPageController =  (req, res, next) => {
         console.log(err);
     });
  * ******/
-    UserModel.findUserByEmail({ f_login_name: f_login_name , f_login_password: f_login_password})
+    UserModel.findUserByEmail({ f_login_name: f_email , f_login_password: f_password})
       .then((result) => {
         if (result.length !== 0) {
           console.log(result)
@@ -95,7 +97,7 @@ exports.getPageController =  (req, res, next) => {
           const f_accounttype = result.f_accounttype;
           let dataUsers = result;
           return bcrypt
-            .compare(f_login_password, result.f_hash_password)
+            .compare(f_password, result.f_hash_password)
             .then((result) => {
               console.log(result)
               if (!result) {
