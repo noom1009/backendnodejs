@@ -1,4 +1,4 @@
-const con = require('../setings/configs/mysql');
+const con = require('../settings/configs/mysql');
 const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
@@ -6,7 +6,7 @@ const path = require("path");
 const app = express();
 var md5 = require("md5");
 const bcrypt = require("bcrypt");
-const env = require('../setings/configs/env');
+const env = require('../settings/configs/env');
 const saltRounds = env.saltRounds;
 const users = require('./schema/users/tbluser');
 const db = require('./index');

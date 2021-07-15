@@ -8,9 +8,9 @@ const md5 = require("md5");
 const jwt = require("jsonwebtoken");
 const axios = require("axios");
 const crypto = require("crypto");
-const env = require('../../setings/configs/env');
-const setting = require('../../setings/configs/setting');
-const lang = require('../../setings/lang/lang_app');
+const env = require('../../settings/configs/env');
+const setting = require('../../settings/configs/setting');
+const lang = require('../../settings/lang/lang_app');
 const bookingControllers = require("../../controllers/bookingControllers");
 
 router.get(

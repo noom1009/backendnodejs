@@ -16,7 +16,7 @@ const UserModel = require('./../models/users/usersModel');
 const ProjectModel = require('../models/projects/index');
 const env = require('../config/env');
 const lang = require('../config/lang/lang_users');
-const configvariable = require('../config/configvariable');
+const setting = require('../config/setting');
 const log = require('../middleware/logger');
 const saltRounds = env.saltRounds;
 
@@ -37,18 +37,18 @@ exports.registerController = (req, res, next) => {
           f_salt_password: salt,
           f_email: req.body.f_email,
           f_mobile: req.body.f_mobile,
-          f_company: configvariable.company,
-          f_department: configvariable.department,
-          f_position: configvariable.position,
-          f_status: configvariable.UsersStatus ,
-          f_admin_status: configvariable.UsersAdmin,
-          f_accounttype: configvariable.Accounttype,
+          f_company: setting.company,
+          f_department: setting.department,
+          f_position: setting.position,
+          f_status: setting.UsersStatus ,
+          f_admin_status: setting.UsersAdmin,
+          f_accounttype: setting.Accounttype,
           f_dateupdate: ts,
         });
         User.registerUser()
           .then((result) => {
             log.logger('info', 'Register mail Error: ' + lang.userInsertMessages);
-            res.render(configvariable.loginPage, {
+            res.render(setting.loginPage, {
               title: env.app_name,
               logo: env.logo_app,
               company_name: env.company_name,
@@ -93,7 +93,7 @@ exports.loginController = (req, res, next) => {
           .then((results) => {
                     log.logger('info', 'Register mail Error 500: ' + lang.usersMessages);      
             if (!results) {
-              res.render(configvariable.usersPage, {
+              res.render(setting.usersPage, {
                 title: env.app_name,
                 logo: env.logo_app,
                 company_name: env.company_name,
@@ -123,7 +123,7 @@ exports.loginController = (req, res, next) => {
                   var userApprove = result.count;
                 ProjectModel.findUserAll()
                 .then((results)=>{
-                  res.render(configvariable.dashboardPage, {
+                  res.render(setting.dashboardPage, {
                   data: {
                     title: lang.dashboard,
                     apptitle: env.apptitle,
@@ -166,7 +166,7 @@ exports.loginController = (req, res, next) => {
             }
           })
           .catch((error) => {
-            res.render(configvariable.usersPage, {
+            res.render(setting.usersPage, {
               title: env.app_name,
               logo: env.logo_app,
               company_name: env.company_name,
@@ -180,7 +180,7 @@ exports.loginController = (req, res, next) => {
       }
     })
     .catch((error) => {
-      res.render(configvariable.usersPage, {
+      res.render(setting.usersPage, {
         title: env.app_name,
         logo: env.logo_app,
         company_name: env.company_name,
@@ -200,7 +200,7 @@ exports.getusersController = (req, res, next) => {
         var userApprove = result.count;
         UserModel.findUserAll()
           .then((result) => {
-                  res.render(configvariable.userPage, {
+                  res.render(setting.userPage, {
                     data: {
                       title: lang.usersTitles,
                       titledetail: lang.usersTilte,
@@ -235,7 +235,7 @@ exports.getusersController = (req, res, next) => {
             });
           });
   } else {
-    res.redirect(configvariable.rootPage);
+    res.redirect(setting.rootPage);
   }
 };
 
@@ -254,7 +254,7 @@ exports.approveusersController = (req, res, next) => {
             var userApprove = result.count;
             UserModel.findUserAll()
               .then((result) => {
-                      res.render(configvariable.userPage, {
+                      res.render(setting.userPage, {
                         data: {
                           title: lang.usersTiltes,
                           titledetail: lang.usersTilte,
@@ -292,7 +292,7 @@ exports.approveusersController = (req, res, next) => {
       });
     });
      } else {
-    res.redirect(configvariable.rootPage);
+    res.redirect(setting.rootPage);
   }
 };
 
@@ -311,7 +311,7 @@ exports.deleteuserController = (req, res, next) => {
             var userApprove = result.count;
             UserModel.findUserAll()
               .then((result) => {
-                      res.render(configvariable.userPage, {
+                      res.render(setting.userPage, {
                         data: {
                           title: lang.usersTiltes,
                           titledetail: lang.usersTilte,
@@ -352,7 +352,7 @@ exports.deleteuserController = (req, res, next) => {
       });
     });
      } else {
-    res.redirect(configvariable.rootPage);
+    res.redirect(setting.rootPage);
   }
 };
 
@@ -363,7 +363,7 @@ exports.adduserController = (req, res, next) => {
         var userApprove = result.count;
         UserModel.findUserAll()
           .then((result) => {
-                  res.render(configvariable.usersPageAdd, {
+                  res.render(setting.usersPageAdd, {
                     data: {
                       title: lang.usersTitles,
                       titledetail: lang.usersTilte,
@@ -396,7 +396,7 @@ exports.adduserController = (req, res, next) => {
             });
           });
   } else {
-    res.redirect(configvariable.rootPage);
+    res.redirect(setting.rootPage);
   }
 };
 
@@ -416,10 +416,10 @@ exports.saveuserController = (req, res, next) => {
           f_hash_password: hash,
           f_salt_password: salt,
           f_email: req.body.f_login_name,
-          f_mobile: configvariable.mobile,
-          f_company: configvariable.company,
-          f_department: configvariable.department,
-          f_position: configvariable.position,
+          f_mobile: setting.mobile,
+          f_company: setting.company,
+          f_department: setting.department,
+          f_position: setting.position,
           f_status: req.body.f_status,
           f_admin_status: req.body.f_admin_status,
           f_accounttype: req.body.f_accounttype,
@@ -437,7 +437,7 @@ exports.saveuserController = (req, res, next) => {
                 var userApprove = result.count;
                 UserModel.findUserAll()
                   .then((result) => {
-                          res.render(configvariable.userPage, {
+                          res.render(setting.userPage, {
                             data: {
                               title: lang.usersTiltes,
                               titledetail: lang.usersTilte,
@@ -482,7 +482,7 @@ exports.saveuserController = (req, res, next) => {
       });
   });
    } else {
-    res.redirect(configvariable.rootPage);
+    res.redirect(setting.rootPage);
   }
 };
 
@@ -495,7 +495,7 @@ exports.edituserController = (req, res, next) => {
       UserModel.findUserone(f_acc_code)
         .then((result) => {
           var resultUsers = result.dataValues;
-                    res.render(configvariable.usersPageEdit, {
+                    res.render(setting.usersPageEdit, {
                       data: {
                         title: lang.usersTitles,
                         titledetail: lang.usersTilte,
@@ -524,7 +524,7 @@ exports.edituserController = (req, res, next) => {
               });
         });
      } else {
-    res.redirect(configvariable.rootPage);
+    res.redirect(setting.rootPage);
   }
 };
 
@@ -543,7 +543,7 @@ exports.updateController = (req, res, next) => {
                 var userApprove = result.count;
                 UserModel.findUserAll()
                   .then((result) => {
-                          res.render(configvariable.userPage, {
+                          res.render(setting.userPage, {
                             data: {
                               title: lang.usersTiltes,
                               titledetail: lang.usersTilte,
@@ -584,13 +584,13 @@ exports.updateController = (req, res, next) => {
       });
     });
      } else {
-    res.redirect(configvariable.rootPage);
+    res.redirect(setting.rootPage);
   }
 };
 
 exports.renewpasswordController = (req, res, next) => {
   const { f_login_name = "", f_login_password } = req.body;
-    res.render(configvariable.renewPasswordPage, { title: env.app_name, logo: env.logo_app, messagesbox: lang.messagesBoxTitle, messagesboxs: lang,messagesBoxTitle });
+    res.render(setting.renewPasswordPage, { title: env.app_name, logo: env.logo_app, messagesbox: lang.messagesBoxTitle, messagesboxs: lang,messagesBoxTitle });
 }
 
 exports.resetpasswordController = (req, res, next) => {
@@ -601,13 +601,13 @@ exports.resetpasswordController = (req, res, next) => {
       .then((result) => {
         if (result.length !== 0) {
               UserModel.activeCode(f_login_name, f_activecode, f_login_password);
-            res.redirect(configvariable.rootPage);
+            res.redirect(setting.rootPage);
         } else {
-            res.redirect(configvariable.rootPage);
+            res.redirect(setting.rootPage);
         }
     })
       .catch((error) => {
-        res.render(configvariable.usersPage, {
+        res.render(setting.usersPage, {
           title: env.app_name,
           logo: env.logo_app,
           company_name: env.company_name,

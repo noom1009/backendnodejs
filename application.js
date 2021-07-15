@@ -8,13 +8,13 @@ const cookieParser = require("cookie-parser");
 const mysql = require("mysql");
 const favicon = require("serve-favicon");
 const router = require("./routers/index");
-const env = require('./setings/configs/env');
+const env = require('./settings/configs/env');
 const createError = require("http-errors");
 const log4js = require("log4js");
 const log = log4js.getLogger();
 const cors = require("cors");
-const lang = require('./setings/lang/lang_app');
-const setting = require('./setings/configs/setting');
+const lang = require('./settings/lang/lang_app');
+const setting = require('./settings/configs/setting');
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");

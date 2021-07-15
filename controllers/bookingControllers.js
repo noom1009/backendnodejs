@@ -13,10 +13,10 @@ const md5 = require("md5");
 const nodemailer = require("nodemailer");
 const db = require("../models/index");
 const sequelize = db.sequelize;
-const env = require('../setings/configs/env');
-const setting = require('../setings/configs/setting');
+const env = require('../settings/configs/env');
+const setting = require('../settings/configs/setting');
 const saltRounds = env.saltRounds;
-const lang = require('../setings/lang/lang_app');
+const lang = require('../settings/lang/lang_app');
 
 let tsData = Date.now();
 const moment = require("moment");
@@ -27,7 +27,7 @@ const now = new Date();
 const dateString = moment(now).tz("Asia/Bangkok").format("D/M/Y");
 const dateFormat = moment(now).tz("Asia/Bangkok").format("YYYY-MM-DD hh:mm:ss");
 const BookingModel = require('../models/bookingModel');
-const con = require("../setings/configs/mysql");
+const con = require("../settings/configs/mysql");
 const BookingDB = db.BookingDB;
 
 exports.getPageController =  (req, res, next) => {

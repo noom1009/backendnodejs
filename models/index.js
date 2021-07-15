@@ -1,7 +1,7 @@
 const util = require("util");
 const Sequelize = require("sequelize");
-const env = require('../setings/configs/env');
-const con = require('../setings/configs/mysql');
+const env = require('../settings/configs/env');
+const con = require('../settings/configs/mysql');
 
 const sequelize = new Sequelize(env.database, env.username, env.password, {
     host: env.host,

@@ -1,7 +1,7 @@
 const env = {
     database: "realstate",
     username: "root",
-    password: "#Iris@2013",
+    password: "irisgroup",
     host: "localhost",
     port: "3306", 
     dialect: "mysql",
@@ -9,8 +9,6 @@ const env = {
     checkIPaddress: "https://api.ipify.org?format=json",
     secret: "@#SDfionli1818685*-+sfsf",
     storageUpload: "./public/uploads",
-    mongooseURL:
-      "mongodb+srv://homehubdd:X6HCdRhKsjKLdgRV@cluster0.ldvce.mongodb.net/homehubdd?retryWrites=true&w=majority",
     pool: {
       max: 5,
       min: 0,
