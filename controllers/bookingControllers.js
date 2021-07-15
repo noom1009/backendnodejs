@@ -44,7 +44,7 @@ exports.getPageController =  (req, res, next) => {
         res.status(500).json({
           message: error,
         });
-      });   
+      });
   }else if(res.statusCode !== 202){
   //  res.status(202).json("ยอมรับแล้ว แต่กำลังประมวลผลบางอย่าง");
     BookingModel.findAll()
@@ -58,7 +58,7 @@ exports.getPageController =  (req, res, next) => {
         res.status(500).json({
           message: error,
         });
-      });       
+      });
   }else if(res.statusCode !== 403){
     res.status(403).json("ผู้ใช้ปัจจุบันถูกห้ามไม่ให้เข้าถึงข้อมูลส่วนนี้ (Forbidden)");
   }else if(res.statusCode !== 405){

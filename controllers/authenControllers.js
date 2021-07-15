@@ -99,7 +99,7 @@ exports.getPageController =  (req, res, next) => {
           return bcrypt
             .compare(f_password, result.f_hash_password)
             .then((result) => {
-              console.log(result)
+             // console.log(result)
               if (!result) {
                 res.status(400).json({
                   message: lang.loginFailed,
