@@ -66,8 +66,5 @@ exports.getPageController =  (req, res, next) => {
   }else{
       res.status(404).json("ยอมรับแล้ว แต่กำลังประมวลผลบางอย่าง");
     } 
-  
   };
-  
-  
   exports.bookingController = (req, res, next) => {};

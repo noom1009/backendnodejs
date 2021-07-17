@@ -17,11 +17,10 @@ const sequelize = new Sequelize(env.database, env.username, env.password, {
       idle: env.pool.idle,
     },
   });
-  
   const db = {};
-  
   db.Sequelize = Sequelize;
   db.sequelize = sequelize;
   db.UsersDB = require('../models/schema/users/tbluser')(sequelize, Sequelize);
   db.BookingDB = require('../models/schema/booking/index')(sequelize, Sequelize);
+  db.CompanyDB = require('../models/schema/company/index')(sequelize,Sequelize);
   module.exports = db;

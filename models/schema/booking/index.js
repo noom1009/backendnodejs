@@ -188,12 +188,12 @@ module.exports = (sequelize, Sequelize) => {
           },   
           f_datecancletimestamp: {
             type: Sequelize.STRING,
-            field: "f_datecancletimestamp",        
+            field: "f_datecancletimestamp",
           },   
           f_contacetranfertimestamp: {
             type: Sequelize.STRING,
-            field: "f_contacetranfertimestamp",        
-          },                                                                                             
+            field: "f_contacetranfertimestamp",
+          },
       },
       {
         timestamps: false,
@@ -202,4 +202,3 @@ module.exports = (sequelize, Sequelize) => {
     );
     return Booking;
   };
-  

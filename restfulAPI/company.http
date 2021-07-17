@@ -1,0 +1,6 @@
+GET http://localhost:9000/company
+Content-Type: application/json
+###
+
+GET http://localhost:9000/company/1
+Content-Type: application/json
